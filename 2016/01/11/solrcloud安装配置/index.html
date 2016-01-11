@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>solrcolud集群安装配置 | JJYY</title>
+  <meta name="author" content="yy0">
+  
+  <meta name="description" content="solrcolud集群安装配置。solr4.3">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="solrcolud集群安装配置"/>
+  <meta property="og:site_name" content="JJYY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://zipperary.com/atom.xml" title="JJYY" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">JJYY</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+      <li><a href="/tools">工具</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-11T03:50:56.956Z"><a href="/2016/01/11/solrcloud安装配置/">2016-01-11</a></time>
+      
+      
+  
+    <h1 class="title">solrcolud集群安装配置</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="SOLR_u7EF4_u57FA_u767E_u79D1_u7684_u4ECB_u7ECD"><a href="#SOLR_u7EF4_u57FA_u767E_u79D1_u7684_u4ECB_u7ECD" class="headerlink" title="SOLR维基百科的介绍"></a>SOLR维基百科的介绍</h2><p>Solr是Apache Lucene项目的开源企业搜索平台。其主要功能包括全文检索、命中標示[1]、分面搜索、动态聚类、数据库集成，以及富文本（如Word、PDF）的處理。Solr是高度可扩展的，并提供了分布式搜索和索引复制。Solr是最流行的企业级搜索引擎，[2]Solr 4还增加了NoSQL支持。[3]<br><a id="more"></a><br>Solr是用Java编写、运行在Servlet容器（如Apache Tomcat或Jetty）的一个独立的全文搜索服务器。 Solr采用了Lucene Java搜索库为核心的全文索引和搜索，并具有类似REST的HTTP/XML和JSON的API。 Solr强大的外部配置功能使得无需进行Java编码，便可对其进行调整以适应多种类型的应用程序。Solr有一个插件架构，以支持更多的高级定制。</p>
+<p>因为2010年Apache Lucene和Apache Solr项目合并，两个项目是由同一个Apache软件基金会开发团队制作实现的。提到技术或产品时，Lucene/Solr或Solr/Lucene是一样的。</p>
+<h2 id="SOLR4-3_u5B89_u88C5_u914D_u7F6E"><a href="#SOLR4-3_u5B89_u88C5_u914D_u7F6E" class="headerlink" title="SOLR4.3安装配置"></a>SOLR4.3安装配置</h2><p><strong>1、单SOLR安装配置</strong></p>
+<p>安装JAVA运行环境（GOOGLE）<br>安装TOMCAT（google）</p>
+<p>下载SOLR安装包<br>去官网下截最新安装。<a href="http://www.apache.org/dyn/closer.cgi/lucene/solr/4.10.2" target="_blank" rel="external">传送门</a><br>由于本人在安装配置的时候最新版本为4.3版本，所以本文就以4.3版本为例。</p>
+<p>解压SOLR安装包。例如解压到E:/solr4.3<br>solr-4.3.1\example\webapps目录下的war包copy到tomcat/webapps目录下。<br>创建SOLR安装目录D:/sorlhome，solr-4.3.1\example\solr 目录 COPY到D:/sorlhome下。将D:/sorlhome/solr/collection1 重命名为collection.<br>修改D:/sorlhome/solr/solr.xml配置文件cores部分配置：<br><code>&lt;cores adminPath=&quot;/admin/cores&quot; defaultCoreName=&quot;collection&quot; host=&quot;localhost&quot; hostPort=&quot;8080&quot; hostContext=&quot;solr&quot; zkClientTimeout=&quot;${zkClientTimeout:15000}&quot;&gt;</code><br>&ensp;&ensp;&ensp;&ensp;<code>&lt;core name=&quot;collection&quot; instanceDir=&quot;collection&quot; /&gt;</code><br><code>&lt;/cores&gt;</code><br>具体配置说明，原配置文件里有说。</p>
+<p>在tomcat\conf\Catalina\localhost目录内新建solr.xml配置文件。内容如下：<br><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</code><br><code>&lt;Context docBase=&quot;d:\tomcat\webapps\solr.war&quot; debug=&quot;0&quot; crossContext=&quot;true&quot;&gt;</code><br>&ensp;&ensp;&ensp;&ensp;<code>&lt;!--value值为solr安装目录--&gt;</code><br>&ensp;&ensp;&ensp;&ensp;<code>&lt;Environment name=&quot;solr/home&quot; type=&quot;java.lang.String&quot; value=&quot;d:\sorlhome\solr&quot; override=&quot;true&quot;/&gt;</code><br><code>&lt;/Context&gt;</code></p>
+<p>启动tomcat。访问localhost:8080正常就能看到solr管理页面了。能看到就说明安装成功了。</p>
+<p><strong>2、solrcolud安装配置</strong></p>
+<p>在单机安装配置基础上要安装Zookeeper集群。具体安装过程请参见之前<a href="http://jriver.tk/2014/11/28/zookeeper-install/" target="_blank" rel="external">博文</a></p>
+<p>solrcloud所有配置参数都将保存在zookeeper集群中，所以修改要上传配置文件节点的TOMCAT catalina启动脚本，添加启动<a href="https://wiki.apache.org/solr/SolrCloud" target="_blank" rel="external">参数</a><br>windows：<br>Set JAVA_OPTS=-Dbootstrap_conf=true -DzkHost=192.168.1.1:2181/solr -DnumShards=1<br>linux:<br>JAVA_OPTS=”-Dbootstrap_conf=true -DzkHost=192.168.1.1:2181/solr -DnumShards=1”<br>参数说明参见<a href="https://wiki.apache.org/solr/SolrCloud" target="_blank" rel="external">传送门</a></p>
+<p>其它节点上solr服务器与上面配置一样。只需将catalina启动脚本内的 bootstrap_conf 参数去除即可。</p>
+<p>启动各节点tomcat，访问localhost:8080正常就能看到solr管理页面了。在界面中会发现增加了solrcloud菜单。能够看各个solr节点状态有那个节点是leader.</p>
+<p>solrcloud的安装配置就介绍到这。solr搜索的配置文件的配置后面再介绍。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/solr/">solr</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/solr/">solr</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/01/11/solr中文分词/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/01/11/shiro,cas,spring单点登录集成/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zippera"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/WEB前端/">WEB前端</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>1</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>3</small></li>
+  
+    <li><a href="/categories/log/">log</a><small>1</small></li>
+  
+    <li><a href="/categories/maven/">maven</a><small>1</small></li>
+  
+    <li><a href="/categories/solr/">solr</a><small>2</small></li>
+  
+    <li><a href="/categories/zookeeper/">zookeeper</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <!--
+<div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>本体：赵伟</li>
+<li>二次元：zippera | moxie</li>
+<li>现状：帝都CS在读研究生</li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+<li>想交友的朋友请<a href="http://zipperary.com/about">联系我</a>！</li>
+<li>QQ 号：763987114</li>
+<font color="red">Hexo 交流群：287306637</font>
+</ul>
+</div>
+-->
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1586279270&verifier=0c2cdcf8&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+Theme of <a href="https://github.com/zippera/lightum">Lightum</a>, Improved from <a href="https://github.com/hexojs/hexo-theme-light">Light</a>, by <a href="/">zippera</a> 
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<!--
+<a href="https://github.com/zippera" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/img/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+-->

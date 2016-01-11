@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ElasticSearch+LogStash+Kibana+Redis搭建日志收集管理服务 | JJYY</title>
+  <meta name="author" content="yy0">
+  
+  <meta name="description" content="ElasticSearch LogStash Kibana+Redis搭建日志收集管理服务">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="ElasticSearch+LogStash+Kibana+Redis搭建日志收集管理服务"/>
+  <meta property="og:site_name" content="JJYY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://zipperary.com/atom.xml" title="JJYY" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">JJYY</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+      <li><a href="/tools">工具</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-11T03:50:56.958Z"><a href="/2016/01/11/日志收集管理服务搭建/">2016-01-11</a></time>
+      
+      
+  
+    <h1 class="title">ElasticSearch+LogStash+Kibana+Redis搭建日志收集管理服务</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>一般情况下，一个站点会由多台server构成, 每台server每天会产生多种不同的日志，为了方面分析线上日志，常用做法是把线上日志集中存储到一个地方，然后按照日期，日志类型，日志内关键字等条件查询。而logstash, elasticsearch, 和kibana就是用来做这件事的开源解决方案。<br><a id="more"></a><br><a href="https://github.com/elasticsearch/logstash" target="_blank" rel="external">Logstash</a> 运行于Jruby上的日志收集和分析系统，支持多种后端存储，包括elasticsearch, s3, riak, mongodb, redis等</p>
+<p><a href="http://www.elasticsearch.org/" target="_blank" rel="external">Elasticsearch</a> Java写的搜索引擎，简单好用，很适合日志的存储和查询, 简称ES</p>
+<p><a href="https://github.com/elasticsearch/kibana" target="_blank" rel="external">Kibana</a> Elasticsearch的查询前端，最早用PHP写的，后来用Ruby重新实现了一遍，最新版本是纯Javascript的，直接在浏览器端运行。</p>
+<p>架构上，在服务器不多的情况下，可以使用Logstash分析日志后，直接存储到ES里面，然后调用Kibana做日志查询。</p>
+<p>以上对各组件描述直接COPY他人的博客。下面直接进入<a href="http://www.elasticsearch.org/overview" target="_blank" rel="external">如何搭建</a>。</p>
+<p>logstash,Elasticsearch,Kibana都可以通过<a href="http://www.elasticsearch.org/overview/elkdownloads/" target="_blank" rel="external">这里</a>下载。各安装的服务上都需要安装JRE，其中安装elasticsearch（最新版本1.4.1）的服务器需要JDK8。JAVA运行环境搭建这里就不多说了。</p>
+<h2 id="u4E00_u3001elasticsearch1-4-1"><a href="#u4E00_u3001elasticsearch1-4-1" class="headerlink" title="一、elasticsearch1.4.1"></a>一、elasticsearch1.4.1</h2><p>1、下载安装包<br>2、解压到 192.168.1.100:/opt/elasticsearch1.4.1<br>3、编辑安装目录下config目录内的elasticsearch.yml文件，添加两项目配置：<br>    <code>http.cors.enabled: true</code><br>    <code>http.cors.allow-origin: http://192.168.1.101:8080</code><br>其它配置项目使用默认值。如果不添加这两项目值 Kibana启动访问里会报Connection Failed异常。<br>http.cors.allow-origin参数的值为kibana服务地址<br>4、执行：bin/elasticsearch -d 命令启动elasticsearch服务。</p>
+<h2 id="u4E8C_u3001Kibana3-1-2"><a href="#u4E8C_u3001Kibana3-1-2" class="headerlink" title="二、Kibana3.1.2"></a>二、Kibana3.1.2</h2><p>1、下载安装包<br>2、解压到 192.168.1.101:/opt/kibana<br>3、安装tomcat<br>4、修改tomcat的server.xml配置文件host节点内设置：<br><code>&lt;Context path=&quot;/&quot; docBase=&quot;/opt/kibana&quot;  reloadable=&quot;true&quot; /&gt;</code><br>5、修改/opt/kibana/config.js,设置elasticsearch指向ES的服务地址：<br>    <code>elasticsearch: &quot;http://192.168.1.100:9200&quot;,</code><br>6、启动tomcat。访问<a href="http://192.168.1.101:8080/就能看到kibana页面了。" target="_blank" rel="external">http://192.168.1.101:8080/就能看到kibana页面了。</a></p>
+<h2 id="u4E09_u3001redis"><a href="#u4E09_u3001redis" class="headerlink" title="三、redis"></a>三、redis</h2><p>偷懒直接上<a href="http://redis.io/" target="_blank" rel="external">管网</a>看吧，安装很简单。<br>假设安装在192.168.1.102上，端口为默认值。</p>
+<h2 id="u56DB_u3001logstash1-4-2"><a href="#u56DB_u3001logstash1-4-2" class="headerlink" title="四、logstash1.4.2"></a>四、logstash1.4.2</h2><p><strong>1）日志收集server端安装</strong><br>1、下载安装包<br>2、解压到 192.168.1.101:/opt/logstash<br>3、进行解压的目录，创建conf目录，并在conf目录下新建logstash的配置文件server.conf:<br><code>input {</code><br>&ensp;&ensp;<code>redis {</code><br>&ensp;&ensp;&ensp;&ensp;<code>host =&gt; &quot;192.168.1.102&quot;</code><br>&ensp;&ensp;&ensp;&ensp;<code>data_type =&gt; &quot;list&quot;</code><br>&ensp;&ensp;&ensp;&ensp;<code>key =&gt; &quot;logstash&quot;</code><br>&ensp;&ensp;&ensp;&ensp;<code>db =&gt; 7</code><br>&ensp;&ensp;<code>}</code><br><code>}</code><br><code>filter {</code><br>&ensp;&ensp;<code>if [type] == &quot;error&quot; {  # 过滤指定type值的日志</code><br>&ensp;&ensp;&ensp;&ensp;<code>multiline {</code><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<code>pattern =&gt; &quot;^\s&quot; # 将多行日志合并成一行（java）</code><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<code>what =&gt; &quot;previous&quot;</code><br>&ensp;&ensp;&ensp;&ensp;<code>}</code><br>&ensp;&ensp;<code>}</code><br><code>}</code><br><code>output {</code><br>&ensp;&ensp;<code>elasticsearch {</code><br>&ensp;&ensp;&ensp;&ensp;<code>bind_host =&gt; &quot;192.168.1.100&quot;</code><br>&ensp;&ensp;&ensp;&ensp;<code>bind_port =&gt; &quot;9200&quot;</code><br>&ensp;&ensp;&ensp;&ensp;<code>host =&gt; &quot;192.168.1.100&quot;</code><br>&ensp;&ensp;&ensp;&ensp;<code>port =&gt; &quot;9200&quot;</code><br>&ensp;&ensp;&ensp;&ensp;<code>protocol =&gt; &quot;http&quot;</code><br>&ensp;&ensp;<code>}</code><br><code>}</code><br>4、以后台方式运行服务 nohup bin/logstash -f conf/server.conf &amp;<br><strong>2）日志采集client端安装</strong><br>假设收集192.168.1.110:/opt/logs/test.log文件日志<br>安装过程与收集端一样。但配置文件要配置成如下：<br><code>input {</code><br>&ensp;&ensp;<code>file {</code><br>&ensp;&ensp;&ensp;&ensp;<code>type =&gt; &quot;solr-info&quot;</code><br>&ensp;&ensp;&ensp;&ensp;<code>path =&gt; &quot;/opt/solrcloud/solr1/logs/info/info.log&quot;</code><br>&ensp;&ensp;<code>}</code><br><code>}</code><br><code>filter {</code><br>&ensp;&ensp;<code>grok {</code><br>&ensp;&ensp;&ensp;&ensp;<code>match =&gt; { &quot;message&quot; =&gt; &quot;%{COMBINEDAPACHELOG}&quot; }</code><br>&ensp;&ensp;<code>}</code><br>&ensp;&ensp;<code>date {</code><br>&ensp;&ensp;&ensp;&ensp;<code>match =&gt; [ &quot;timestamp&quot; , &quot;yyyy-MM-dd HH:mm:ss Z&quot; ]</code><br>&ensp;&ensp;<code>}</code><br>&ensp;&ensp;<code>if [type] == &quot;error&quot; {</code><br>&ensp;&ensp;&ensp;&ensp;<code>multiline {</code><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<code>pattern =&gt; &quot;^\s&quot;</code><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<code>what =&gt; &quot;previous&quot;</code><br>&ensp;&ensp;&ensp;&ensp;<code>}</code><br>&ensp;&ensp;<code>}</code><br><code>}</code><br><code>output {</code><br>&ensp;&ensp;<code>redis {</code><br>&ensp;&ensp;&ensp;&ensp;<code>host =&gt; &quot;10.1.0.208&quot; # server端与client端设值一样</code><br>&ensp;&ensp;&ensp;&ensp;<code>data_type =&gt; &quot;list&quot; # server端与client端设值一样</code><br>&ensp;&ensp;&ensp;&ensp;<code>key =&gt; &quot;logstash&quot; # server端与client端设值一样</code><br>&ensp;&ensp;&ensp;&ensp;<code>db =&gt; 7 # server端与client端设值一样</code><br>&ensp;&ensp;<code>}</code><br><code>}</code></p>
+<p>logstash更多配置说明请参见<a href="http://logstash.net/docs/1.4.2/" target="_blank" rel="external">这里</a><br>4、以后台方式运行服务 nohup bin/logstash -f conf/server.conf &amp;</p>
+<p>往日志文件里输入日志通过192.168.1.101:8080/index.html#/dashboard/file/logstash.json<br>就能查询到日志了。</p>
+<p>简单的安装配置就记录到这了。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/log/">log</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/ElasticSearch/">ElasticSearch</a>, <a href="/tags/Kibana/">Kibana</a>, <a href="/tags/LogStash/">LogStash</a>, <a href="/tags/日志/">日志</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/01/11/使用github存放maven库/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/01/11/启动多个Spring容器注意事项/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zippera"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/WEB前端/">WEB前端</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>1</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>3</small></li>
+  
+    <li><a href="/categories/log/">log</a><small>1</small></li>
+  
+    <li><a href="/categories/maven/">maven</a><small>1</small></li>
+  
+    <li><a href="/categories/solr/">solr</a><small>2</small></li>
+  
+    <li><a href="/categories/zookeeper/">zookeeper</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <!--
+<div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>本体：赵伟</li>
+<li>二次元：zippera | moxie</li>
+<li>现状：帝都CS在读研究生</li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+<li>想交友的朋友请<a href="http://zipperary.com/about">联系我</a>！</li>
+<li>QQ 号：763987114</li>
+<font color="red">Hexo 交流群：287306637</font>
+</ul>
+</div>
+-->
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1586279270&verifier=0c2cdcf8&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+Theme of <a href="https://github.com/zippera/lightum">Lightum</a>, Improved from <a href="https://github.com/hexojs/hexo-theme-light">Light</a>, by <a href="/">zippera</a> 
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<!--
+<a href="https://github.com/zippera" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/img/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+-->

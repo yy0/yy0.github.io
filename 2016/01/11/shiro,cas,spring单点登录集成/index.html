@@ -1,0 +1,553 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>shiro，cas, spring单点登录集成 | JJYY</title>
+  <meta name="author" content="yy0">
+  
+  <meta name="description" content="shiro，cas, spring单点登录集成">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="shiro，cas, spring单点登录集成"/>
+  <meta property="og:site_name" content="JJYY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://zipperary.com/atom.xml" title="JJYY" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">JJYY</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+      <li><a href="/tools">工具</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-11T03:50:56.955Z"><a href="/2016/01/11/shiro,cas,spring单点登录集成/">2016-01-11</a></time>
+      
+      
+  
+    <h1 class="title">shiro，cas, spring单点登录集成</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Apache Shiro是一个强大易用的Java安全框架，提供了认证、授权、加密和会话管理等功能：<br>认证 - 用户身份识别，常被称为用户“登录”；<br>授权 - 访问控制；<br>密码加密 - 保护或隐藏数据防止被偷窥；<br>会话管理 - 每用户相关的时间敏感的状态。<br>对于任何一个应用程序，Shiro都可以提供全面的安全管理服务。并且相对于其他安全框架，Shiro要简单的多。<br><a id="more"></a><br>Shiro 1.2开始提供了Jasig CAS单点登录的支持，单点登录主要用于多系统集成，即在多个系统中，用户只需要到一个中央服务器登录一次即可访问这些系统中的任何一个，无须多次登录。</p>
+<p>Jasig CAS单点登录系统分为服务器端和客户端，服务器端提供单点登录，多个客户端（子系统）将跳转到该服务器进行登录验证，大体流程如下：<br>1、访问客户端需要登录的页面<a href="http://localhost:8080/，此时会跳到单点登录服务器https://casServer:8080/casServer/login?service=http://localhost:8080/shiro-cas；" target="_blank" rel="external">http://localhost:8080/，此时会跳到单点登录服务器https://casServer:8080/casServer/login?service=http://localhost:8080/shiro-cas；</a><br>2、如果此时单点登录服务器也没有登录的话，会显示登录表单页面，输入用户名/密码进行登录；<br>3、登录成功后服务器端会回调客户端传入的地址：<a href="http://localhost:8080/shiro-cas?ticket=ST-71983-0RL4Kgas19TI2geFfb6e-cas，且带着一个ticket；" target="_blank" rel="external">http://localhost:8080/shiro-cas?ticket=ST-71983-0RL4Kgas19TI2geFfb6e-cas，且带着一个ticket；</a><br>4、客户端会把ticket提交给服务器来验证ticket是否有效；如果有效服务器端将返回用户身份；<br>5、客户端可以再根据这个用户身份获取如当前系统用户/角色/权限信息。</p>
+<p>这里就不介绍CAS单点登录服务器的搭建，直接说cas与shiro集成。</p>
+<p>1、项目引入shiro及cas依赖，spring不多说了。<br>maven:<br><code>&lt;dependency&gt;</code><br>    <code>&lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;</code><br>    <code>&lt;artifactId&gt;shiro-core&lt;/artifactId&gt;</code><br>    <code>&lt;version&gt;1.2.3&lt;/version&gt;</code><br><code>&lt;/dependency&gt;</code><br><code>&lt;dependency&gt;</code><br>    <code>&lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;</code><br>    <code>&lt;artifactId&gt;shiro-web&lt;/artifactId&gt;</code><br>    <code>&lt;version&gt;1.2.3&lt;/version&gt;</code><br><code>&lt;/dependency&gt;</code><br><code>&lt;dependency&gt;</code><br>    <code>&lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;</code><br>    <code>&lt;artifactId&gt;shiro-spring&lt;/artifactId&gt;</code><br>    <code>&lt;version&gt;1.2.3&lt;/version&gt;</code><br><code>&lt;/dependency&gt;</code><br><code>&lt;dependency&gt;</code><br>    <code>&lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;</code><br>    <code>&lt;artifactId&gt;shiro-cas&lt;/artifactId&gt;</code><br>    <code>&lt;version&gt;1.2.3&lt;/version&gt;</code><br><code>&lt;/dependency&gt;</code></p>
+<p><code>&lt;dependency&gt;</code><br>    <code>&lt;groupId&gt;cas&lt;/groupId&gt;</code><br>    <code>&lt;artifactId&gt;cas-client-core&lt;/artifactId&gt;</code><br>    <code>&lt;version&gt;3.1.12&lt;/version&gt;</code><br><code>&lt;/dependency&gt;</code></p>
+<p>2、web.xml配置：<br><code>&lt;!-- spring --&gt;</code><br><code>&lt;context-param&gt;</code><br>    <code>&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</code><br>    <code>&lt;param-value&gt;classpath*:spring/applicationContext.xml&lt;/param-value&gt;</code><br><code>&lt;/context-param&gt;</code></p>
+<p><code>&lt;listener&gt;</code><br>    <code>&lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/</code>listener-class&gt;<code>`&lt;/listener&gt;</code></p>
+<p><code>&lt;!-- 登录 --&gt;</code><br><code>&lt;filter&gt;</code><br>    <code>&lt;filter-name&gt;shiroFilter&lt;/filter-name&gt;</code><br>    <code>&lt;filter-class&gt;org.springframework.web.filter.DelegatingFilterProxy&lt;/filter-class&gt;</code><br>    <code>&lt;init-param&gt;</code><br>        <code>&lt;param-name&gt;targetFilterLifecycle&lt;/param-name&gt;</code><br>        <code>&lt;param-value&gt;true&lt;/param-value&gt;</code><br>    <code>&lt;/init-param&gt;</code><br><code>&lt;/filter&gt;</code><br><code>&lt;filter-mapping&gt;</code><br>    <code>&lt;filter-name&gt;shiroFilter&lt;/filter-name&gt;</code><br>    <code>&lt;url-pattern&gt;/*&lt;/url-pattern&gt;</code><br><code>&lt;/filter-mapping&gt;</code><br><code>&lt;!-- 登出 --&gt;</code><br><code>&lt;listener&gt;</code><br>    <code>&lt;listener-class&gt;org.jasig.cas.client.session.SingleSignOutHttpSessionListener&lt;/listener-class&gt;</code><br><code>&lt;/listener&gt;</code><br><code>&lt;filter&gt;</code><br>    <code>&lt;filter-name&gt;CAS Single Sign Out Filter&lt;/filter-name&gt;</code><br>    <code>&lt;filter-class&gt;org.jasig.cas.client.session.SingleSignOutFilter&lt;/filter-class&gt;</code><br><code>&lt;/filter&gt;</code><br><code>&lt;filter-mapping&gt;</code><br>    <code>&lt;filter-name&gt;CAS Single Sign Out Filter&lt;/filter-name&gt;</code><br>    <code>&lt;url-pattern&gt;/*&lt;/url-pattern&gt;</code><br><code>&lt;/filter-mapping&gt;</code></p>
+<p>3、spring配置及资源文件:<br>shiro.properties:<br><code>shiro.session.timeout=1800000</code><br><code>shiro.session.validate.timespan=1800000</code><br><code># cas登录URL</code><br><code>shiro.login.url=http://casServer:8080/casServer/login?service=http://localhost:8080/shiro-cas</code><br><code># cas logout</code><br><code>shiro.logout.url=http://casServer:8080/casServer/logout?service=http://localhost:8080/</code><br><code># cas登录成功跳转URL</code><br><code>shiro.login.success.url=http://localhost:8080/home</code><br><code># cas服务器URL</code><br><code>shiro.casServer.url=http://casServer:8080/casServer</code><br><code># 客户端CAS登录URL</code><br><code>shiro.client.cas=http://localhost:8080/shiro-cas</code><br><code># 客户端CAS验证失败跳转URL</code><br><code>shiro.failureUrl=/erroy.jsp</code></p>
+<p>spring-shiro.xml:<br><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code><br><code>&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd&quot;
+       default-lazy-init=&quot;true&quot;&gt;</code></p>
+<pre><code>&lt;bean id=&quot;casFilter&quot; class=&quot;org.apache.shiro.cas.CasFilter&quot;&gt;
+    &lt;!--配置验证错误时的失败页面（Ticket 校验不通过时展示的错误页面） --&gt;
+    &lt;property name=&quot;failureUrl&quot; value=&quot;${shiro.failureUrl}&quot; /&gt;
+&lt;/bean&gt;
+&lt;bean id=&quot;logoutFilter&quot; class=&quot;org.apache.shiro.web.filter.authc.LogoutFilter&quot;&gt;
+    &lt;property name=&quot;redirectUrl&quot; value=&quot;${shiro.logout.url}&quot;/&gt;
+&lt;/bean&gt;
+&lt;bean id=&quot;formAuthenticationFilter&quot; class=&quot;org.apache.shiro.web.filter.authc.FormAuthenticationFilter&quot; /&gt;
+&lt;bean id=&quot;anonymousFilter&quot; class=&quot;org.apache.shiro.web.filter.authc.AnonymousFilter&quot; /&gt;
+
+&lt;!-- Shiro Filter
+    anon:匿名过滤器，不用登录也可以访问
+    authc:如果继续操作,需要做对应的表单验证否则不能通过
+    authcBasic:基本http验证过滤，如果不通过，跳转登录页面
+    logout:登录退出过滤器
+    noSessionCreation:没有session创建过滤器
+    perms:权限过滤器
+    port:端口过滤器，可以设置是否是指定端口如果不是跳转到登录页面
+    rest:http方法过滤器，可以指定如post不能进行访问等
+    roles:    角色过滤器，判断当前用户是否指定角色
+    ssl:请求需要通过ssl，如果不是跳转回登录页
+    user:如果访问一个已知用户，比如记住我功能，走这个过滤器
+--&gt;
+&lt;bean id=&quot;shiroFilter&quot; class=&quot;org.apache.shiro.spring.web.ShiroFilterFactoryBean&quot;&gt;
+    &lt;property name=&quot;securityManager&quot; ref=&quot;securityManager&quot; /&gt;
+
+    &lt;!--没有单点登录下的配置：没有权限或者失败后跳转的页面 --&gt;
+    &lt;!-- &lt;property name=&quot;loginUrl&quot; value=&quot;/login/toLoginAction&quot;/&gt; --&gt;
+
+    &lt;!--有单点登录的配置：登录 CAS 服务端地址，参数 service 为服务端的返回地址 --&gt;
+    &lt;property name=&quot;loginUrl&quot; value=&quot;${shiro.login.url}&quot; /&gt;
+    &lt;!--&lt;property name=&quot;successUrl&quot; value=&quot;/page/index.jsp&quot;/&gt; --&gt;
+    &lt;property name=&quot;successUrl&quot; value=&quot;${shiro.login.success.url}&quot; /&gt;
+
+    &lt;property name=&quot;filters&quot;&gt;
+        &lt;map&gt;
+            &lt;entry key=&quot;authc&quot; value-ref=&quot;formAuthenticationFilter&quot; /&gt;
+            &lt;entry key=&quot;cas&quot; value-ref=&quot;casFilter&quot; /&gt;
+            &lt;entry key=&quot;anon&quot; value-ref=&quot;anonymousFilter&quot; /&gt;
+            &lt;entry key=&quot;logout&quot; value-ref=&quot;logoutFilter&quot; /&gt;
+        &lt;/map&gt; 
+    &lt;/property&gt;
+    &lt;property name=&quot;filterChainDefinitions&quot;&gt;  
+        &lt;value&gt;
+            /shiro-cas = cas
+            /**/*.js = anon
+            /**/*.css = anon
+            /logout = logout
+            /** = authc
+        &lt;/value&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;casRealm&quot; class=&quot;com.test.shiro.realm.CustomeCASRealm&quot;&gt;
+    &lt;property name=&quot;defaultRoles&quot; value=&quot;ROLE_USER&quot; /&gt;
+    &lt;property name=&quot;casServerUrlPrefix&quot;
+        value=&quot;${shiro.casServer.url}&quot; /&gt;
+    &lt;!--客户端的回调地址设置，必须和上面的shiro-cas过滤器拦截的地址一致 --&gt;
+    &lt;property name=&quot;casService&quot;
+        value=&quot;${shiro.client.cas}&quot; /&gt;
+&lt;/bean&gt;
+
+&lt;!--Define the realm you want to use to connect to your back-end security 
+    datasource: --&gt;
+&lt;bean id=&quot;casSubjectFactory&quot; class=&quot;org.apache.shiro.cas.CasSubjectFactory&quot; /&gt;
+
+&lt;!-- default web session manager，session expire time 20 minutes --&gt;
+&lt;bean id=&quot;defaultWebSessionManager&quot; class=&quot;org.apache.shiro.web.session.mgt.DefaultWebSessionManager&quot;&gt;
+    &lt;property name=&quot;globalSessionTimeout&quot; value=&quot;${shiro.session.timeout}&quot;/&gt;
+    &lt;property name=&quot;sessionIdCookie&quot; ref=&quot;simpleCookie&quot;/&gt;
+    &lt;property name=&quot;sessionValidationScheduler&quot; ref=&quot;sessionValidationScheduler&quot;/&gt;
+    &lt;property name=&quot;sessionValidationSchedulerEnabled&quot; value=&quot;true&quot;/&gt;
+    &lt;property name=&quot;deleteInvalidSessions&quot; value=&quot;true&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;simpleCookie&quot; class=&quot;org.apache.shiro.web.servlet.SimpleCookie&quot;&gt;
+    &lt;constructor-arg index=&quot;0&quot; value=&quot;JSESSIONID_COOKIE&quot;/&gt;
+    &lt;property name=&quot;httpOnly&quot; value=&quot;true&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;sessionValidationScheduler&quot; class=&quot;org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler&quot;&gt;
+    &lt;property name=&quot;sessionManager&quot; ref=&quot;defaultWebSessionManager&quot;/&gt;
+    &lt;property name=&quot;interval&quot; value=&quot;${shiro.session.validate.timespan}&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;!--
+        单机/集群配置说明:
+    1.如采用单机的shiro配置
+      securityManager的sessionManager属性不需要注入，shiro会使用默认的serlvet容器实现的sessionManager;
+      securityManager的cahceManager属性需要注入，shiro自带的本机内存缓存实现类memoryConstrainedCacheManager;
+    2.如果采用集群部署方案
+      securityManager的sessionManager属性需要注入，shiro自带的defaultWebSessionManager（web实现）;
+      securityManager的cahceManager属性需要注入，自己实现的cacheManager类customShiroCacheManager
+--&gt;
+&lt;!-- shiro&apos;s main business-tier object for web-enabled applications --&gt;
+&lt;bean id=&quot;securityManager&quot; class=&quot;org.apache.shiro.web.mgt.DefaultWebSecurityManager&quot;&gt;
+    &lt;property name=&quot;sessionManager&quot; ref=&quot;defaultWebSessionManager&quot;/&gt;
+    &lt;!--Single realm app. If you have multiple realms, use the &apos;realms&apos; property instead. --&gt;
+    &lt;!-- &lt;property name=&quot;realm&quot; ref=&quot;casRealm&quot; /&gt; --&gt;
+    &lt;property name=&quot;realms&quot;&gt;
+        &lt;list&gt;
+            &lt;ref bean=&quot;casRealm&quot;/&gt;
+        &lt;/list&gt;
+    &lt;/property&gt;
+    &lt;property name=&quot;subjectFactory&quot; ref=&quot;casSubjectFactory&quot; /&gt;
+    &lt;property name=&quot;cacheManager&quot; ref=&quot;memoryCacheManager&quot;/&gt;
+&lt;/bean&gt;
+&lt;bean id=&quot;memoryCacheManager&quot; class=&quot;org.apache.shiro.cache.MemoryConstrainedCacheManager&quot;/&gt;
+
+&lt;!--保证实现了Shiro内部lifecycle函数的bean执行 --&gt;
+&lt;bean id=&quot;lifecycleBeanPostProcessor&quot; class=&quot;org.apache.shiro.spring.LifecycleBeanPostProcessor&quot; /&gt;
+
+
+&lt;!--AOP式方法级权限检查 --&gt;
+&lt;!--Enable Shiro Annotations for Spring-configured beans. Only run after --&gt;
+&lt;!--the lifecycleBeanProcessor has run: --&gt;
+&lt;bean class=&quot;org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator&quot; depends-on=&quot;lifecycleBeanPostProcessor&quot;&gt;
+    &lt;property name=&quot;proxyTargetClass&quot; value=&quot;true&quot; /&gt;
+&lt;/bean&gt;
+&lt;bean class=&quot;org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor&quot;&gt;
+    &lt;property name=&quot;securityManager&quot; ref=&quot;securityManager&quot; /&gt;
+&lt;/bean&gt;
+</code></pre><p></p>
+<p>配置spring启动时加载shiro.properties及spring-shiro.xml</p>
+<p>com.test.shiro.realm.CustomeCASRealm extends org.apache.shiro.cas.CasRealm</p>
+<p><code>@Override</code><br><code>protected AuthorizationInfo doGetAuthorizationInfo(
+        PrincipalCollection principals)</code><br><code>{</code><br>    <code>&lt;!-- 获取登录的用户名，通过用户名获取用户角色及权限 --&gt;</code><br>    <code>// String username = (String) principals.getPrimaryPrincipal();</code><br>    <code>SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();</code><br>    <code>// authorizationInfo.setRoles(userService.findRoles(username));</code><br>    <code>// authorizationInfo.setStringPermissions(userService.findPermissions(username));</code><br>    <code>return authorizationInfo;</code><br><code>}</code></p>
+<p>4、如果URL没有配置正确会出现循环重定向的问题，所以在配置各个跳转URL时需要特别注意。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/java/">java</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/shiro/">shiro</a>, <a href="/tags/spring/">spring</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/01/11/solrcloud安装配置/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/01/11/linux定时任务/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zippera"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/WEB前端/">WEB前端</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>1</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>3</small></li>
+  
+    <li><a href="/categories/log/">log</a><small>1</small></li>
+  
+    <li><a href="/categories/maven/">maven</a><small>1</small></li>
+  
+    <li><a href="/categories/solr/">solr</a><small>2</small></li>
+  
+    <li><a href="/categories/zookeeper/">zookeeper</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <!--
+<div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>本体：赵伟</li>
+<li>二次元：zippera | moxie</li>
+<li>现状：帝都CS在读研究生</li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+<li>想交友的朋友请<a href="http://zipperary.com/about">联系我</a>！</li>
+<li>QQ 号：763987114</li>
+<font color="red">Hexo 交流群：287306637</font>
+</ul>
+</div>
+-->
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1586279270&verifier=0c2cdcf8&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+Theme of <a href="https://github.com/zippera/lightum">Lightum</a>, Improved from <a href="https://github.com/hexojs/hexo-theme-light">Light</a>, by <a href="/">zippera</a> 
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<!--
+<a href="https://github.com/zippera" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/img/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+-->
